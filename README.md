@@ -1,4 +1,9 @@
-# A ver esete pokedex
+# Pokedex!!!
+
+---
+ [Mira la app funcionando aqui!](https://pokedex-e1790.web.app/)
+ 
+---
 
 * AppProvider para manejar el loading, termino de busqueda e info del pokemon
 

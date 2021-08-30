@@ -10,7 +10,7 @@ const Pokemon = () => {
         return <Loading />
     }else {
         return (<section>
-            <img src={pkm.img} alt="cargando imagen" />
+            <img src={pkm.img} alt="imagen not found" />
             <p>{pkm.name}</p>
         </section>)
     }
