@@ -10,7 +10,12 @@ const BarraDeBusqueda = _ => {
     }, [])
 
     const searchPkm = () => {
-        setTerminoDeBusqueda(searchValue.current.value)
+        console.log(searchValue)
+        if(searchValue.current.value.length < 0){
+            setTerminoDeBusqueda('150')
+        }else{
+            setTerminoDeBusqueda(searchValue.current.value)
+        }
     }
 
     const handleSubmit = (e) => {

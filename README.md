@@ -1,10 +1,12 @@
 # A ver esete pokedex
 
-* context api para armar la base de los pokemones 
+* AppProvider para manejar el loading, termino de busqueda e info del pokemon
 
-* contenedores un navbar con buscador y link y un listado de pokemos y si haces click a uno vas a ver mas info.
+* TODO: carta para mostrar la info
 
-* renderizado condicional
+* TODO: index de pokemons
 
-* mi propio css por favor laucha
+* TODO: setiar el objeto pokemon
+
+* TODO: mi propio css por favor laucha
 

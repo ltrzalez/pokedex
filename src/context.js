@@ -4,21 +4,28 @@ const url = 'https://pokeapi.co/api/v2/pokemon/'
 const AppContext = React.createContext()
 
 const AppProvider= ({ children }) => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [terminoDeBusqueda, setTerminoDeBusqueda] = useState('150')
     const [pkm, setPkm] = useState({})
 
     const fetchPkm = async () => {
         setLoading(true)
-        const urlResponse = await fetch(`${url}${terminoDeBusqueda}`)
-        const data = await urlResponse.json()
-        console.log(data)
-        if(data){
-            setPkm(data)
-            setLoading(false)
-        }else{
-            console.log('no hay polkemon')
+        try {
+            const urlResponse = await fetch(`${url}${terminoDeBusqueda}`)
+            const data = await urlResponse.json()
+            console.log(data)
+            if (data) {
+                const { name, sprites } = data                
+                setPkm({
+                    name,
+                    img: sprites != null ? sprites.other["official-artwork"].front_default : "https://cdn.dribbble.com/users/217998/screenshots/2446541/pokemon-rewind.gif"
+                })
+                setLoading(false)
+            }
+        } catch (error) {
+            console.log(error)    
         }
+        
 
     }
 
