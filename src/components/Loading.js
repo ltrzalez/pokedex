@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Loading = () => {
+const Loading = () => {    
+
     return (
         <div >
-            <h1 >Cargando...</h1>
+            <img src="https://cdn.dribbble.com/users/217998/screenshots/2446541/pokemon-rewind.gif" alt="loading..." />
         </div>
     )
 }

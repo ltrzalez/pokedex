@@ -5,7 +5,7 @@ const AppContext = React.createContext()
 
 const AppProvider= ({ children }) => {
     const [loading, setLoading] = useState(true)
-    const [terminoDeBusqueda, setTerminoDeBusqueda] = useState('150')
+    const [terminoDeBusqueda, setTerminoDeBusqueda] = useState('')
     const [pkm, setPkm] = useState({})
 
     const fetchPkm = async () => {
@@ -14,16 +14,19 @@ const AppProvider= ({ children }) => {
             const urlResponse = await fetch(`${url}${terminoDeBusqueda}`)
             const data = await urlResponse.json()
             console.log(data)
-            if (data) {
-                const { name, sprites } = data                
+            if (data.hasOwnProperty('count')){
+                setLoading(true)
+            } else if (data) {
+                const { name, sprites, types } = data                
                 setPkm({
                     name,
-                    img: sprites != null ? sprites.other["official-artwork"].front_default : "https://cdn.dribbble.com/users/217998/screenshots/2446541/pokemon-rewind.gif"
+                    img: sprites.other["official-artwork"].front_default,
+                    types
                 })
                 setLoading(false)
             }
         } catch (error) {
-            console.log(error)    
+            console.log(error)
         }
         
 

@@ -1,19 +1,17 @@
 import React from 'react'
 import { useGlobalContext } from '../context'
-import Loading from './Loading'
 
 const Pokemon = () => {
-    const { pkm, loading } = useGlobalContext()
-    console.log(pkm.img)
-
-    if(loading){
-        return <Loading />
-    }else {
-        return (<section>
-            <img src={pkm.img} alt="imagen not found" />
-            <p>{pkm.name}</p>
-        </section>)
-    }
+    const { pkm } = useGlobalContext()
+    
+    return (<section>
+        <h1>{pkm.name}</h1>
+        {pkm.types.map((el) => {
+            return <p>{el.type.name}</p>
+        })}
+        <img src={pkm.img} alt="imagen not found" />
+    </section>)
+    
 
     
 }
