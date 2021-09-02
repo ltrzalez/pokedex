@@ -6,9 +6,9 @@ import { useGlobalContext } from '../context'
 const PkmOrLoading = () => {
     const { loading } = useGlobalContext()
 
-    return (<>
+    return (<section>
         { loading ? <Loading /> : <Pokemon />}
-    </>)
+    </section>)
 }
 
 export default PkmOrLoading

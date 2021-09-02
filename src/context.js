@@ -7,7 +7,16 @@ const AppProvider= ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [terminoDeBusqueda, setTerminoDeBusqueda] = useState('')
     const [pkm, setPkm] = useState({})
+    const [allNames, setAllNames] = useState([])
 
+    const getNames = async () => {
+        const urlResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=898`)
+        const data = await urlResponse.json()
+        var arrayNames = data.results.map(el => { return el.name })
+        setAllNames([arrayNames])
+        console.log(allNames)
+    }
+    
     const fetchPkm = async () => {
         setLoading(true)
         try {
@@ -28,17 +37,18 @@ const AppProvider= ({ children }) => {
         } catch (error) {
             console.log(error)
         }
-        
-
     }
 
-    useEffect(() => {
+    useEffect(() => {        
         fetchPkm()
     }, [terminoDeBusqueda])
 
-
+    useEffect(() => {
+        getNames()
+    }, [])
+        
     return <AppContext.Provider value={{
-        loading, setTerminoDeBusqueda, pkm
+        loading, setTerminoDeBusqueda, pkm, allNames
     }}>{ children } </AppContext.Provider>
 }
 
